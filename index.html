@@ -14,33 +14,47 @@
             background-image: url('https://cdn.pixabay.com/photo/2018/03/05/23/22/forest-3201174_960_720.jpg');
             background-size: cover;
             background-attachment: fixed;
+            animation: fadeIn 1s;
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         header {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.8);
             padding: 15px 0;
             text-align: center;
             color: #f0f0f0;
             position: relative;
             z-index: 2;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
+
         nav ul {
             list-style-type: none;
             padding: 0;
             margin: 0;
         }
+
         nav ul li {
             display: inline;
             margin: 0 15px;
         }
+
         nav ul li a {
             color: #f0f0f0;
             text-decoration: none;
             font-weight: bold;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
         }
+
         nav ul li a:hover {
             color: #e74c3c;
+            transform: scale(1.1);
         }
+
         .hero {
             background-image: url('https://cdn.pixabay.com/photo/2015/09/18/19/03/barcelona-944608_960_720.jpg');
             background-size: cover;
@@ -50,17 +64,15 @@
             color: #fff;
             position: relative;
             z-index: 2;
-            box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+            box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+            animation: slideIn 1s;
         }
-        .hero h1 {
-            font-size: 4em;
-            margin: 0;
-            padding: 0;
-            font-family: 'Georgia', serif;
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
-        .hero p {
-            font-size: 1.5em;
-        }
+
         .section {
             padding: 20px;
             max-width: 1200px;
@@ -69,12 +81,21 @@
             border-radius: 10px;
             position: relative;
             z-index: 1;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            transition: transform 0.3s;
         }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
         .products {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* Adjust as needed */
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
         }
+
         .product {
             background-color: #1f1f1f;
             border: 1px solid #333;
@@ -82,33 +103,45 @@
             padding: 15px;
             text-align: center;
             color: #fff;
-            transition: background-color 0.3s;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
+
         .product:hover {
             background-color: #333;
+            transform: scale(1.05);
         }
+
         .product img {
             max-width: 100%;
             height: auto;
             border-bottom: 1px solid #333;
             margin-bottom: 10px;
             border-radius: 5px;
+            transition: transform 0.3s;
         }
+
+        .product img:hover {
+            transform: scale(1.1);
+        }
+
         .product h3 {
             margin: 10px 0;
             font-size: 1.2em;
         }
+
         .product .price {
             font-size: 1.2em;
             color: #f39c12;
         }
+
         .product .discount {
             font-size: 1em;
             color: #e74c3c;
             text-decoration: line-through;
             margin-left: 10px;
         }
+
         .sale-tab {
             background-color: #c0392b;
             color: #fff;
@@ -116,13 +149,22 @@
             text-align: center;
             margin: 20px 0;
             border-radius: 10px;
+            font-size: 1.5em;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
-        .contact-form, .payment-tab, .category-tab, .review-tab {
+
+        .contact-form, .payment-tab, .category-tab, .review-tab, .blog-section {
             background-color: #333;
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 20px;
+            transition: background-color 0.3s;
         }
+
+        .contact-form:hover, .payment-tab:hover, .category-tab:hover, .review-tab:hover, .blog-section:hover {
+            background-color: #444;
+        }
+
         .contact-form input, .contact-form textarea, .payment-tab input, .category-tab select {
             width: 100%;
             padding: 10px;
@@ -131,7 +173,14 @@
             border-radius: 5px;
             background-color: #2c2c2c;
             color: #fff;
+            transition: background-color 0.3s;
         }
+
+        .contact-form input:focus, .contact-form textarea:focus, .payment-tab input:focus {
+            background-color: #3d3d3d;
+            border-color: #e74c3c;
+        }
+
         .contact-form button, .payment-tab button {
             background-color: #27ae60;
             color: #fff;
@@ -140,25 +189,32 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 1em;
+            transition: background-color 0.3s, transform 0.3s;
         }
+
         .contact-form button:hover, .payment-tab button:hover {
             background-color: #2ecc71;
+            transform: scale(1.05);
         }
+
         footer {
             background-color: rgba(0, 0, 0, 0.7);
             color: #fff;
             text-align: center;
             padding: 10px;
-            position: fixed;
-            width: 100%;
+            position: relative;
             bottom: 0;
+            width: 100%;
         }
+
         .section h2 {
             font-size: 2em;
             border-bottom: 2px solid #e74c3c;
             padding-bottom: 10px;
             margin-bottom: 20px;
+            color: #e74c3c;
         }
+
         .review {
             background-color: #1f1f1f;
             border: 1px solid #333;
@@ -166,213 +222,196 @@
             padding: 15px;
             margin-bottom: 15px;
             color: #fff;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
+
         .review h3 {
             margin: 0;
             font-size: 1.2em;
             color: #e74c3c;
         }
+
         .review p {
             margin: 5px 0;
             font-size: 1em;
         }
+
         .review .customer {
             font-weight: bold;
+        }
+
+        .blog-section {
+            margin-top: 20px;
+        }
+
+        .blog-section h2 {
+            color: #e74c3c;
+        }
+
+        .blog-post {
+            background-color: #1f1f1f;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .blog-post h3 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #e74c3c;
+        }
+
+        .blog-post p {
+            margin: 5px 0;
+            font-size: 1em;
+        }
+
+        .blog-post time {
+            font-size: 0.9em;
+            color: #ccc;
         }
     </style>
 </head>
 <body>
     <header>
+        <h1>RamdeoBaba Hardware Store</h1>
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#products">Products</a></li>
                 <li><a href="#categories">Categories</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#blog">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="#payment">Payment</a></li>
             </ul>
         </nav>
     </header>
-
-    <div class="hero" id="home">
+    <section class="hero">
         <h1>Welcome to RamdeoBaba Hardware Store</h1>
-        <p>Your one-stop shop for all hardware needs</p>
+        <p>Your one-stop solution for all hardware needs!</p>
+    </section>
+    <div class="sale-tab">
+        <h2>Special Sale! Up to 50% Off on Selected Items!</h2>
+        <p>Don't miss out on our limited-time offer. Check out the products below!</p>
     </div>
-
-    <div class="section sale-tab">
-        <h2>Special Sale!</h2>
-        <p>Up to 50% off on selected items!</p>
-    </div>
-
     <div class="section" id="products">
         <h2>Our Products</h2>
         <div class="products">
-            <!-- Product 1 -->
             <div class="product">
-                <img src="https://via.placeholder.com/150?text=Hammer" alt="Hammer">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkBuh9MkqQHsvbF26YJqUr6ZLJUFlYYCVvhg&s" alt="Hammer">
                 <h3>Hammer</h3>
-                <div class="price">$15.00 <span class="discount">$20.00</span></div>
+                <p class="price">$10.00<span class="discount">$15.00</span></p>
+                <button>Add to Cart</button>
             </div>
-            <!-- Product 2 -->
             <div class="product">
-                <img src="https://via.placeholder.com/150?text=Screwdriver" alt="Screwdriver">
+                <img src="https://rukminim2.flixcart.com/image/850/1000/xif0q/screwdriver-set/p/v/z/6-840-taparia-original-imagpw8bgk6regvq.jpeg?q=90&crop=false" alt="Screwdriver Set">
                 <h3>Screwdriver Set</h3>
-                <div class="price">$10.00 <span class="discount">$12.00</span></div>
+                <p class="price">$15.00<span class="discount">$20.00</span></p>
+                <button>Add to Cart</button>
             </div>
-            <!-- Product 3 -->
             <div class="product">
-                <img src="https://via.placeholder.com/150?text=Drill" alt="Drill">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5QD5NVKO8Ec3ZVSIt2KUHFUBbELrmU3UUlw&s" alt="Electric Drill">
                 <h3>Electric Drill</h3>
-                <div class="price">$75.00 <span class="discount">$90.00</span></div>
+                <p class="price">$45.00<span class="discount">$60.00</span></p>
+                <button>Add to Cart</button>
             </div>
-            <!-- Product 4 -->
             <div class="product">
-                <img src="https://via.placeholder.com/150?text=Wrench" alt="Wrench">
+                <img src="https://hips.hearstapps.com/hmg-prod/images/wrench-set-group-pic-2x3-653bfa527f15a.jpg" alt="Wrench Set">
                 <h3>Wrench Set</h3>
-                <div class="price">$30.00 <span class="discount">$40.00</span></div>
+                <p class="price">$30.00<span class="discount">$40.00</span></p>
+                <button>Add to Cart</button>
             </div>
-            <!-- Product 5 -->
             <div class="product">
-                <img src="https://via.placeholder.com/150?text=Tape+Measure" alt="Tape Measure">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV4SS963V5oPYhOnrLSD1VviI6dygrapRf0Q&s" alt="Tape Measure">
                 <h3>Tape Measure</h3>
-                <div class="price">$8.00 <span class="discount">$10.00</span></div>
+                <p class="price">$5.00<span class="discount">$8.00</span></p>
+                <button>Add to Cart</button>
             </div>
-            <!-- Product 6 -->
             <div class="product">
-                <img src="https://via.placeholder.com/150?text=Level" alt="Spirit Level">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgmNB0sPO6rzy0o9lxq9UhlFzn2OuMBKXepg&s" alt="Spirit Level">
                 <h3>Spirit Level</h3>
-                <div class="price">$12.00 <span class="discount">$15.00</span></div>
+                <p class="price">$12.00<span class="discount">$15.00</span></p>
+                <button>Add to Cart</button>
             </div>
-            <!-- Product 7 -->
             <div class="product">
-                <img src="https://via.placeholder.com/150?text=Pliers" alt="Pliers">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXGrbNAxtRjpPX6aqjkBsL6x8J4WvQ2KwXOw&s" alt="Pliers">
                 <h3>Pliers</h3>
-                <div class="price">$18.00 <span class="discount">$22.00</span></div>
+                <p class="price">$10.00<span class="discount">$14.00</span></p>
+                <button>Add to Cart</button>
             </div>
-            <!-- Product 8 -->
             <div class="product">
-                <img src="https://via.placeholder.com/150?text=Saw" alt="Saw">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjArfo9NJHIqE2vhhVlhliyDJSiVDL1j1w2A&s" alt="Hand Saw">
                 <h3>Hand Saw</h3>
-                <div class="price">$25.00 <span class="discount">$30.00</span></div>
+                <p class="price">$18.00<span class="discount">$25.00</span></p>
+                <button>Add to Cart</button>
             </div>
-            <!-- Product 9 -->
             <div class="product">
-                <img src="https://via.placeholder.com/150?text=Drill+Bits" alt="Drill Bits">
+                <img src="https://www.jiomart.com/images/product/original/rvi6ueqxuq/harden-25-pcs-steel-twist-drill-bit-set-for-metal-wood-plastic-drilling-610293-product-images-orvi6ueqxuq-p597679046-5-202301181710.jpg?im=Resize=(420,420)" alt="Drill Bit Set">
                 <h3>Drill Bit Set</h3>
-                <div class="price">$20.00 <span class="discount">$25.00</span></div>
-            </div>
-            <!-- Product 10 -->
-            <div class="product">
-                <img src="https://via.placeholder.com/150?text=Bolt+and+Nut+Set" alt="Bolt and Nut Set">
-                <h3>Bolt and Nut Set</h3>
-                <div class="price">$15.00 <span class="discount">$18.00</span></div>
-            </div>
-            <!-- Product 11 -->
-            <div class="product">
-                <img src="https://via.placeholder.com/150?text=Socket+Set" alt="Socket Set">
-                <h3>Socket Set</h3>
-                <div class="price">$40.00 <span class="discount">$50.00</span></div>
-            </div>
-            <!-- Product 12 -->
-            <div class="product">
-                <img src="https://via.placeholder.com/150?text=Utility+Knife" alt="Utility Knife">
-                <h3>Utility Knife</h3>
-                <div class="price">$7.00 <span class="discount">$9.00</span></div>
-            </div>
-            <!-- Product 13 -->
-            <div class="product">
-                <img src="https://via.placeholder.com/150?text=Toolbox" alt="Toolbox">
-                <h3>Toolbox</h3>
-                <div class="price">$35.00 <span class="discount">$40.00</span></div>
-            </div>
-            <!-- Product 14 -->
-            <div class="product">
-                <img src="https://via.placeholder.com/150?text=Paint+Brush+Set" alt="Paint Brush Set">
-                <h3>Paint Brush Set</h3>
-                <div class="price">$12.00 <span class="discount">$15.00</span></div>
-            </div>
-            <!-- Product 15 -->
-            <div class="product">
-                <img src="https://via.placeholder.com/150?text=Caulking+Gun" alt="Caulking Gun">
-                <h3>Caulking Gun</h3>
-                <div class="price">$10.00 <span class="discount">$12.00</span></div>
-            </div>
-            <!-- Product 16 -->
-            <div class="product">
-                <img src="https://via.placeholder.com/150?text=Socket+Wrench" alt="Socket Wrench">
-                <h3>Socket Wrench</h3>
-                <div class="price">$22.00 <span class="discount">$27.00</span></div>
+                <p class="price">$20.00<span class="discount">$25.00</span></p>
+                <button>Add to Cart</button>
             </div>
         </div>
     </div>
-
-    <div class="section" id="categories">
-        <h2>Product Categories</h2>
-        <div class="category-tab">
-            <select>
-                <option value="tools">Tools</option>
-                <option value="hardware">Hardware</option>
-                <option value="plumbing">Plumbing</option>
-                <option value="electrical">Electrical</option>
-                <!-- Add more categories here -->
-            </select>
-        </div>
-    </div>
-
-    <div class="section" id="contact">
-        <h2>Contact Us</h2>
-        <div class="contact-form">
-            <h3>Get in Touch</h3>
-            <form>
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <input type="text" name="location" placeholder="Your Location" required>
-                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
-    </div>
-
-    <div class="section" id="payment">
-        <h2>Payment Information</h2>
-        <div class="payment-tab">
-            <h3>Enter Payment Details</h3>
-            <form>
-                <input type="text" name="cardNumber" placeholder="Card Number" required>
-                <input type="text" name="expiryDate" placeholder="Expiry Date (MM/YY)" required>
-                <input type="text" name="cvv" placeholder="CVV" required>
-                <button type="submit">Pay Now</button>
-            </form>
-        </div>
-    </div>
-
     <div class="section" id="reviews">
         <h2>Customer Reviews</h2>
-        <div class="review-tab">
-            <!-- Review 1 -->
-            <div class="review">
-                <h3>John Doe</h3>
-                <p class="customer">"Great selection of tools and excellent customer service. I found everything I needed in one place!"</p>
+        <div class="review">
+            <h3>John Doe</h3>
+            <p>"Great quality tools at affordable prices! Highly recommend."</p>
+        </div>
+        <div class="review">
+            <h3>Jane Smith</h3>
+            <p>"Excellent customer service and fast delivery. Will buy again!"</p>
+        </div>
+        <div class="review">
+            <h3>Bob Johnson</h3>
+            <p>"The drill I purchased works perfectly. Thank you, RamdeoBaba!"</p>
+        </div>
+    </div>
+    <div class="section" id="payment">
+        <h2>Payment Options</h2>
+        <p>We accept various payment methods:</p>
+        <ul>
+            <li>Credit/Debit Cards</li>
+            <li>PayPal</li>
+            <li>Net Banking</li>
+            <li>Cash on Delivery</li>
+        </ul>
+        <div class="payment-tab">
+            <h3>Make a Payment</h3>
+            <input type="text" placeholder="Enter amount">
+            <button>Pay Now</button>
+        </div>
+    </div>
+    <div class="section" id="contact">
+        <h2>Contact Us</h2>
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+    <div class="section" id="blog">
+        <h2>Our Blog</h2>
+        <div class="blog-section">
+            <div class="blog-post">
+                <h3>How to Choose the Right Tools</h3>
+                <p>Choosing the right tools can make or break your project. Here are some tips to help you select the best tools for your needs.</p>
+                <time datetime="2024-09-22">September 22, 2024</time>
             </div>
-            <!-- Review 2 -->
-            <div class="review">
-                <h3>Jane Smith</h3>
-                <p class="customer">"The quality of the products is top-notch. Highly recommend this hardware store to all DIY enthusiasts."</p>
+            <div class="blog-post">
+                <h3>Top 5 Essential Tools for Every DIYer</h3>
+                <p>If you're a DIY enthusiast, here are five tools that you must have in your arsenal.</p>
+                <time datetime="2024-09-15">September 15, 2024</time>
             </div>
-            <!-- Review 3 -->
-            <div class="review">
-                <h3>Michael Brown</h3>
-                <p class="customer">"Fast shipping and very helpful staff. Will definitely shop here again for my hardware needs."</p>
-            </div>
-            <!-- Review 4 -->
-            <div class="review">
-                <h3>Emily Davis</h3>
-                <p class="customer">"Fantastic experience! The prices are reasonable and the products are durable. Thank you, RamdeoBaba!"</p>
+            <div class="blog-post">
+                <h3>Maintenance Tips for Your Tools</h3>
+                <p>Proper maintenance can extend the life of your tools. Here are some simple tips to keep them in top shape.</p>
+                <time datetime="2024-09-10">September 10, 2024</time>
             </div>
         </div>
     </div>
-
     <footer>
         <p>&copy; 2024 RamdeoBaba Hardware Store. All rights reserved.</p>
     </footer>
